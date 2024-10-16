@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_feed_menu"
+        android:title="@string/home_feed_menu_link_name" />
+    <item
+        android:id="@+id/profile_menu"
+        android:title="@string/profile_menu_link_name" />
+    <item
+        android:id="@+id/search_menu"
+        android:title="@string/search_menu_link_name" />
+    <item
+        android:id="@+id/add_post_menu"
+        android:title="@string/add_post_menu_link_name" />
+    <item
+        android:id="@+id/notifications_menu"
+        android:title="@string/notifications_menu_link_name" />
+
+</menu>
