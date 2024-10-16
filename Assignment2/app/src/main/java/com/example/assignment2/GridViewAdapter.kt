@@ -24,7 +24,7 @@ BaseAdapter() {
 
     override fun getItemId(position: Int): Long {
         return 0
-    }\
+    }
 
     override fun getView(position: Int, gridItemView: View?, parent: ViewGroup?): View? {
         var gridItemView = gridItemView
