@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 
 internal class GridViewAdapter(
-    private val context: Context,
+    private val context: Context?,
     private val gridViewItemArrayList: ArrayList<RecyclerViewItem>
 ) :
 BaseAdapter() {
@@ -29,7 +29,7 @@ BaseAdapter() {
     override fun getView(position: Int, gridItemView: View?, parent: ViewGroup?): View? {
         var gridItemView = gridItemView
         if (layoutInflater == null) {
-            layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            layoutInflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
         if (gridItemView == null) {
             gridItemView = layoutInflater!!.inflate(R.layout.grid_view_item, null)

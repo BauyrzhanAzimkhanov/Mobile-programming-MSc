@@ -21,22 +21,10 @@ class SearchActivity: AppCompatActivity() {
             insets
         }
         val dataset = arrayListOf(
-            RecyclerViewItem(
-                "VanSamaOfficial",
-                R.drawable.van_darkholme,
-                "Hello!\nFull master is here!"
-            ),
-            RecyclerViewItem(
-                "Franchesco Totti",
-                R.drawable.francesco_totti,
-                "Do you remember match against Australia?"
-            ),
+            RecyclerViewItem("VanSamaOfficial", R.drawable.van_darkholme, "Hello!\nFull master is here!"),
+            RecyclerViewItem("Franchesco Totti", R.drawable.francesco_totti, "Do you remember match against Australia?"),
             RecyclerViewItem("holebas_sead", R.drawable.parfenon, "Athens, Greece"),
-            RecyclerViewItem(
-                "Radja Nainggolan",
-                R.drawable.radja_nainggolan,
-                "Good old times!\n#Belgium"
-            )
+            RecyclerViewItem("Radja Nainggolan", R.drawable.radja_nainggolan, "Good old times!\n#Belgium")
         )
         val searchView: SearchView = findViewById(R.id.search_view)
         val recyclerView: RecyclerView = findViewById(R.id.search_activity_recycler_view)

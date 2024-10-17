@@ -10,21 +10,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(), Filterable {
+class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>) :
+    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(), Filterable {
     private var initialDataSet = ArrayList<RecyclerViewItem>().apply {
         dataSet?.let { addAll(it) }
     }
 
-    private val searchFilter: Filter = object: Filter() {
+    private val searchFilter: Filter = object : Filter() {
         override fun performFiltering(input: CharSequence?): FilterResults {
             val filteredArrayList: ArrayList<RecyclerViewItem> = ArrayList()
-                if (input.isNullOrEmpty()) {
+            if (input.isNullOrEmpty()) {
                 initialDataSet.let { filteredArrayList.addAll(it) }
-            }
-            else {
+            } else {
                 initialDataSet.forEach {
-                    if (it.username.contains(input))
-                     {
+                    if (it.username.contains(input)) {
                         filteredArrayList.add(it)
                     }
                 }
@@ -35,7 +34,7 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>): Rec
         }
 
         override fun publishResults(input: CharSequence?, results: FilterResults?) {
-            if(results?.values is ArrayList<*>) {
+            if (results?.values is ArrayList<*>) {
                 dataSet.clear()
                 dataSet.addAll(results.values as ArrayList<RecyclerViewItem>)
                 notifyDataSetChanged()
@@ -43,10 +42,11 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>): Rec
         }
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val usernameItemView: TextView
         val imageItemView: ImageView
         val commentItemTextView: TextView
+
         init {
             usernameItemView = view.findViewById(R.id.username_item_text_view)
             imageItemView = view.findViewById(R.id.image_item_image_view)
@@ -55,7 +55,8 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>): Rec
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.feed_recycler_view_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.feed_recycler_view_item, parent, false)
         return ViewHolder(view)
     }
 
