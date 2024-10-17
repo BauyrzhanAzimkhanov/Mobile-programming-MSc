@@ -37,7 +37,6 @@ android {
 
 dependencies {
     val nav_version = "2.8.2"
-
     // Jetpack Compose integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
