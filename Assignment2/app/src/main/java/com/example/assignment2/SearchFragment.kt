@@ -40,7 +40,13 @@ class SearchFragment : Fragment() {
                 recyclerViewAdapter.filter.filter(query)
                 return true
             }
-            override fun onQueryTextChange(newtext: String?): Boolean {
+            override fun onQueryTextChange(query: String?): Boolean {
+                if (query != null) {
+                    if (query.isEmpty()) {
+                        recyclerViewAdapter.filter.filter(query)
+                        return true
+                    }
+                }
                 return false
             }
         })

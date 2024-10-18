@@ -20,10 +20,10 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>) :
         override fun performFiltering(input: CharSequence?): FilterResults {
             val filteredArrayList: ArrayList<RecyclerViewItem> = ArrayList()
             if (input.isNullOrEmpty()) {
-                initialDataSet.let { filteredArrayList.addAll(it) }
+                filteredArrayList.addAll(initialDataSet)
             } else {
                 initialDataSet.forEach {
-                    if (it.username.contains(input)) {
+                    if (it.username.lowercase().contains(input)) {
                         filteredArrayList.add(it)
                     }
                 }
