@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home_feed">
         <action
             android:id="@+id/action_home_feed_menu_to_profile_menu"
-            app:destination="@+id/profile_menu"/>
+            app:destination="@+id/profile_menu">
+            <argument
+                android:name="username"
+                app:argType="string"/>
+        </action>
     </fragment>
     <fragment
         android:id="@+id/profile_menu"
@@ -26,7 +30,11 @@
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_search_menu_to_profile_menu"
-            app:destination="@+id/profile_menu"/>
+            app:destination="@+id/profile_menu">
+            <argument
+                android:name="username"
+                app:argType="string"/>
+        </action>
     </fragment>
     <fragment
         android:id="@+id/add_post_menu"

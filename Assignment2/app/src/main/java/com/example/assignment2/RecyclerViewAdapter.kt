@@ -62,16 +62,17 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>, priv
         holder.commentItemTextView.text = initialDataSet[position].comment
         var likesItemTextViewText: String = initialDataSet[position].likes.toString() + "likes"
         holder.likesItemTextView.text = likesItemTextViewText
+        val username = initialDataSet[position].username
         holder.usernameItemView.setOnClickListener {
             try {
-                val transitionToProfileMenuAction = HomeFeedFragmentDirections.actionHomeFeedMenuToProfileMenu()
+                val transitionToProfileMenuAction = HomeFeedFragmentDirections.actionHomeFeedMenuToProfileMenu(username)
                 navigationController.navigate(transitionToProfileMenuAction)
             }
             catch (exception: Exception) {
                 println("Transited from wrong origin - HomeFeedFragment: $exception")
             }
             try {
-                val transitionToProfileMenuAction = SearchFragmentDirections.actionSearchMenuToProfileMenu()
+                val transitionToProfileMenuAction = SearchFragmentDirections.actionSearchMenuToProfileMenu(initialDataSet[position].username)
                 navigationController.navigate(transitionToProfileMenuAction)
             }
             catch (exception: Exception) {
