@@ -28,29 +28,29 @@ class SearchActivity: AppCompatActivity() {
         )
         val searchView: SearchView = findViewById(R.id.search_view)
         val recyclerView: RecyclerView = findViewById(R.id.search_activity_recycler_view)
-        val recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter(dataset)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = recyclerViewAdapter
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                recyclerViewAdapter.filter.filter(query)
-                return true
-//                if (SearchRecyclerViewItem(query, dataset))
-//                {
-//                    recyclerViewAdapter!!.filter.filter(query)
-//                }
-//                else
-//                {
-//                    Toast.makeText(this@SearchActivity, "No Match found", Toast.LENGTH_LONG).show()
-//                }
+//        val recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter(dataset)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//        recyclerView.adapter = recyclerViewAdapter
+//        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                recyclerViewAdapter.filter.filter(query)
+//                return true
+////                if (SearchRecyclerViewItem(query, dataset))
+////                {
+////                    recyclerViewAdapter!!.filter.filter(query)
+////                }
+////                else
+////                {
+////                    Toast.makeText(this@SearchActivity, "No Match found", Toast.LENGTH_LONG).show()
+////                }
+////                return false
+//            }
+//
+//            override fun onQueryTextChange(newtext: String?): Boolean {
+////                recyclerViewAdapter.filter.filter(newtext)
 //                return false
-            }
-
-            override fun onQueryTextChange(newtext: String?): Boolean {
-//                recyclerViewAdapter.filter.filter(newtext)
-                return false
-            }
-        })
+//            }
+//        })
     }
 
     fun SearchRecyclerViewItem(username: String, dataset: ArrayList<RecyclerViewItem>): Boolean {

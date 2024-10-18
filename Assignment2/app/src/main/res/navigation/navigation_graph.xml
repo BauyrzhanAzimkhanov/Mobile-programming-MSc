@@ -9,7 +9,11 @@
         android:id="@+id/home_feed_menu"
         android:name="com.example.assignment2.HomeFeedFragment"
         android:label="HomeFeedFragment"
-        tools:layout="@layout/fragment_home_feed"/>
+        tools:layout="@layout/fragment_home_feed">
+        <action
+            android:id="@+id/action_home_feed_menu_to_profile_menu"
+            app:destination="@+id/profile_menu"/>
+    </fragment>
     <fragment
         android:id="@+id/profile_menu"
         android:name="com.example.assignment2.ProfileFragment"
@@ -19,7 +23,11 @@
         android:id="@+id/search_menu"
         android:name="com.example.assignment2.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_search_menu_to_profile_menu"
+            app:destination="@+id/profile_menu"/>
+    </fragment>
     <fragment
         android:id="@+id/add_post_menu"
         android:label="AddPostFragment"

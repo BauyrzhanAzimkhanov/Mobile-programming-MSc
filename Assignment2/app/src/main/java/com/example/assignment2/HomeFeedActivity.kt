@@ -23,10 +23,10 @@ class HomeFeedActivity : AppCompatActivity() {
             RecyclerViewItem("holebas_sead", R.drawable.parfenon, "Athens, Greece"),
             RecyclerViewItem("Radja Nainggolan", R.drawable.radja_nainggolan, "Good old times!\n#Belgium")
         )
-        val recyclerViewAdapter = RecyclerViewAdapter(dataset)
-
-        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = recyclerViewAdapter
+//        val recyclerViewAdapter = RecyclerViewAdapter(dataset, navigationController = parent.)
+//
+//        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//        recyclerView.adapter = recyclerViewAdapter
     }
 }

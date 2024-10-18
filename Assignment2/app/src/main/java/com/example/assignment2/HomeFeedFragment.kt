@@ -5,10 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class HomeFeedFragment : Fragment() {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewAdapter: RecyclerViewAdapter
+    private lateinit var navigationController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +24,11 @@ class HomeFeedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_feed, container, false)
+        val view = inflater.inflate(R.layout.fragment_home_feed, container, false)
+        recyclerView = view.findViewById(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        navigationController = findNavController()
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,9 +38,7 @@ class HomeFeedFragment : Fragment() {
             RecyclerViewItem("holebas_sead", R.drawable.parfenon, "Athens, Greece"),
             RecyclerViewItem("Radja Nainggolan", R.drawable.radja_nainggolan, "Good old times!\n#Belgium")
         )
-        val recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter(dataset)
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerViewAdapter = RecyclerViewAdapter(dataset, navigationController)
         recyclerView.adapter = recyclerViewAdapter
     }
 }

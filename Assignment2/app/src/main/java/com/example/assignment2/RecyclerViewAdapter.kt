@@ -7,10 +7,11 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 
 
-class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>) :
+class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>, private val navigationController: NavController) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(), Filterable {
     private var initialDataSet = ArrayList<RecyclerViewItem>().apply {
         dataSet?.let { addAll(it) }
@@ -64,6 +65,22 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>) :
         holder.usernameItemView.text = dataSet[position].username
         holder.imageItemView.setImageResource(dataSet[position].image)
         holder.commentItemTextView.text = dataSet[position].comment
+        holder.usernameItemView.setOnClickListener {
+            try {
+                val transitionToProfileMenuAction = HomeFeedFragmentDirections.actionHomeFeedMenuToProfileMenu()
+                navigationController.navigate(transitionToProfileMenuAction)
+            }
+            catch (exception: Exception) {
+                println("Transited from wrong origin - HomeFeedFragment: $exception")
+            }
+            try {
+                val transitionToProfileMenuAction = SearchFragmentDirections.actionSearchMenuToProfileMenu()
+                navigationController.navigate(transitionToProfileMenuAction)
+            }
+            catch (exception: Exception) {
+                println("Transited from wrong origin - SearchFragment: $exception")
+            }
+        }
     }
 
     override fun getItemCount() = dataSet.size

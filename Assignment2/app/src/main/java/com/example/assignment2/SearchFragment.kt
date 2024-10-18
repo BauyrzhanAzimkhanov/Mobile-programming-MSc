@@ -6,10 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class SearchFragment : Fragment() {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchView: SearchView
+    private lateinit var recyclerViewAdapter: RecyclerViewAdapter
+    private lateinit var navigationController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -19,7 +25,12 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
+        searchView = view.findViewById(R.id.search_view)
+        recyclerView = view.findViewById(R.id.search_activity_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        navigationController = findNavController()
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,10 +41,8 @@ class SearchFragment : Fragment() {
             RecyclerViewItem("holebas_sead", R.drawable.parfenon, "Athens, Greece"),
             RecyclerViewItem("Radja Nainggolan", R.drawable.radja_nainggolan, "Good old times!\n#Belgium")
         )
-        val searchView: SearchView = view.findViewById(R.id.search_view)
-        val recyclerView: RecyclerView = view.findViewById(R.id.search_activity_recycler_view)
-        val recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter(dataset)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        recyclerViewAdapter = RecyclerViewAdapter(dataset, navigationController)
         recyclerView.adapter = recyclerViewAdapter
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
