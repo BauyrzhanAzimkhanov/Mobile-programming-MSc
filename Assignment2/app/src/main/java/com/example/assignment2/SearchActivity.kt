@@ -7,8 +7,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.SearchView
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 
 class SearchActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,10 +19,10 @@ class SearchActivity: AppCompatActivity() {
             insets
         }
         val dataset = arrayListOf(
-            RecyclerViewItem("VanSamaOfficial", R.drawable.van_darkholme, "Hello!\nFull master is here!"),
-            RecyclerViewItem("Franchesco Totti", R.drawable.francesco_totti, "Do you remember match against Australia?"),
-            RecyclerViewItem("holebas_sead", R.drawable.parfenon, "Athens, Greece"),
-            RecyclerViewItem("Radja Nainggolan", R.drawable.radja_nainggolan, "Good old times!\n#Belgium")
+            RecyclerViewItem("VanSamaOfficial", R.drawable.van_darkholme, "Hello!\nFull master is here!", 69),
+            RecyclerViewItem("Franchesco Totti", R.drawable.francesco_totti, "Do you remember match against Australia?", 10),
+            RecyclerViewItem("holebas_sead", R.drawable.parfenon, "Athens, Greece", 1987),
+            RecyclerViewItem("Radja Nainggolan", R.drawable.radja_nainggolan, "Good old times!\n#Belgium", 8)
         )
         val searchView: SearchView = findViewById(R.id.search_view)
         val recyclerView: RecyclerView = findViewById(R.id.search_activity_recycler_view)

@@ -26,16 +26,16 @@ BaseAdapter() {
         return 0
     }
 
-    override fun getView(position: Int, gridItemView: View?, parent: ViewGroup?): View? {
-        var gridItemView = gridItemView
+    override fun getView(position: Int, gridItemView: View?, parent: ViewGroup?): View {
+        var gridItemViewChangeable = gridItemView
         if (layoutInflater == null) {
             layoutInflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
-        if (gridItemView == null) {
-            gridItemView = layoutInflater!!.inflate(R.layout.grid_view_item, null)
+        if (gridItemViewChangeable == null) {
+            gridItemViewChangeable = layoutInflater!!.inflate(R.layout.grid_view_item, null)
         }
-        image = gridItemView!!.findViewById(R.id.image_mini_image_view)
+        image = gridItemViewChangeable!!.findViewById(R.id.image_mini_image_view)
         image.setImageResource(gridViewItemArrayList[position].image)
-        return gridItemView
+        return gridItemViewChangeable
     }
 }

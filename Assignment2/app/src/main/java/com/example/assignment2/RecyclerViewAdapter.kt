@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>, private val navigationController: NavController) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(), Filterable {
     private var initialDataSet = ArrayList<RecyclerViewItem>().apply {
-        dataSet?.let { addAll(it) }
+        addAll(dataSet)
     }
 
     private val searchFilter: Filter = object : Filter() {
@@ -44,15 +44,10 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>, priv
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val usernameItemView: TextView
-        val imageItemView: ImageView
-        val commentItemTextView: TextView
-
-        init {
-            usernameItemView = view.findViewById(R.id.username_item_text_view)
-            imageItemView = view.findViewById(R.id.image_item_image_view)
-            commentItemTextView = view.findViewById(R.id.comment_item_text_view)
-        }
+        val usernameItemView: TextView = view.findViewById(R.id.username_item_text_view)
+        val imageItemView: ImageView = view.findViewById(R.id.image_item_image_view)
+        val commentItemTextView: TextView = view.findViewById(R.id.comment_item_text_view)
+        val likesItemTextView: TextView = view.findViewById(R.id.likes_item_text_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -62,9 +57,11 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>, priv
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.usernameItemView.text = dataSet[position].username
-        holder.imageItemView.setImageResource(dataSet[position].image)
-        holder.commentItemTextView.text = dataSet[position].comment
+        holder.usernameItemView.text = initialDataSet[position].username
+        holder.imageItemView.setImageResource(initialDataSet[position].image)
+        holder.commentItemTextView.text = initialDataSet[position].comment
+        var likesItemTextViewText: String = initialDataSet[position].likes.toString() + "likes"
+        holder.likesItemTextView.text = likesItemTextViewText
         holder.usernameItemView.setOnClickListener {
             try {
                 val transitionToProfileMenuAction = HomeFeedFragmentDirections.actionHomeFeedMenuToProfileMenu()
@@ -80,6 +77,11 @@ class RecyclerViewAdapter(private val dataSet: ArrayList<RecyclerViewItem>, priv
             catch (exception: Exception) {
                 println("Transited from wrong origin - SearchFragment: $exception")
             }
+        }
+        holder.likesItemTextView.setOnClickListener {
+            initialDataSet[position].likes++
+            likesItemTextViewText = initialDataSet[position].likes.toString() + "likes"
+            holder.likesItemTextView.text = likesItemTextViewText
         }
     }
 

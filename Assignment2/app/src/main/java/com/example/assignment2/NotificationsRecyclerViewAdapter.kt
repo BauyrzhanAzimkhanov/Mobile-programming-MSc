@@ -9,11 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 class NotificationsRecyclerViewAdapter(private val dataSet: ArrayList<NotificationsRecyclerViewItem>): RecyclerView.Adapter<NotificationsRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val notificationItemView: TextView
-
-        init {
-            notificationItemView = view.findViewById(R.id.notification_text_view)
-        }
+        val notificationItemView: TextView = view.findViewById(R.id.notification_text_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationsRecyclerViewAdapter.ViewHolder {
@@ -23,7 +19,8 @@ class NotificationsRecyclerViewAdapter(private val dataSet: ArrayList<Notificati
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.notificationItemView.text = dataSet[position].username + ": " + dataSet[position].action + " at " + dataSet[position].timestamp
+        val likesItemTextViewText = dataSet[position].username + ": " + dataSet[position].action + " at " + dataSet[position].timestamp.toString()
+        holder.notificationItemView.text = likesItemTextViewText
     }
 
     override fun getItemCount() = dataSet.size
