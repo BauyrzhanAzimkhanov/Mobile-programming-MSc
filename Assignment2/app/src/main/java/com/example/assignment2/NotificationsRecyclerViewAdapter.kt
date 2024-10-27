@@ -19,8 +19,9 @@ class NotificationsRecyclerViewAdapter(private val dataSet: ArrayList<Notificati
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val likesItemTextViewText = dataSet[position].username + ": " + dataSet[position].action + " at " + dataSet[position].timestamp.toString()
-        holder.notificationItemView.text = likesItemTextViewText
+        holder.notificationItemView.text = with(dataSet[position]) {
+            "$username: $action at $timestamp"
+        }
     }
 
     override fun getItemCount() = dataSet.size
